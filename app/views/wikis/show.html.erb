@@ -2,7 +2,7 @@
 <h1>
   <%= @wiki.title %> <br>
   <small>
-    submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= 'FIX THIS' %>
+    submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= @user_email %>
   </small>
 </h1>
 
