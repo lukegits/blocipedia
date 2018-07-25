@@ -45,4 +45,9 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
+<% if current_user.role == 'premium' %>
+  <p> <%= link_to "Downgrade Account to Standard?", downgrade_user_path(current_user), data: { confirm: "Are you sure?"}, method: :post %> </p>
+
+<% end %>
+
 <%= link_to "Back", :back %>

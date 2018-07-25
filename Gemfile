@@ -48,6 +48,12 @@ gem "pundit"
 
 gem 'faker'
 
+gem 'stripe'
+
+gem 'figaro', '1.0'
+
+gem 'rolify'
+
 group :development do
   gem 'listen', '~> 3.0.5'
 end
