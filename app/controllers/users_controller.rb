@@ -17,6 +17,11 @@ class UsersController < ApplicationController
       flash[:error] = "There was an error creating your account. Please try again."
       render :new
     end
+        @user_wikis = @user.wikis.where(private: true)
+
+    @user_wikis.each do |makepub|
+      makepub.update_attributes(private: false)
+    end
  end
 
  def downgrade

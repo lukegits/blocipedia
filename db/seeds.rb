@@ -39,6 +39,13 @@ include Faker
     role:     'premium'
   )
 
+  #2nd Premium member
+premium_2 = User.create!(
+  email:    'premium2@example.com',
+  password: 'helloworld',
+  role:     'premium'
+  )
+
 puts "Seed finished"
 puts "#{User.count} users created."
 puts "#{Wiki.count} wikis created."
