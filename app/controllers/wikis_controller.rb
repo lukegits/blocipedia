@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+  include ApplicationHelper
 
   before_action :authenticate_user!, except: [ :index, :show ]
 

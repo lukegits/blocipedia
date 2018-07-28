@@ -54,6 +54,8 @@ gem 'figaro', '1.0'
 
 gem 'rolify'
 
+gem 'redcarpet'
+
 group :development do
   gem 'listen', '~> 3.0.5'
 end
