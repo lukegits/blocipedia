@@ -1,0 +1,7 @@
+<% if @wiki.user_id == current_user.id || current_user.admin? %>
+		<div class="form-group">
+			<%= hidden_field_tag(:wiki_id, value: @wiki.id) %>
+			<%= label_tag(:email, "Collaborator email") %> <br>
+			<%= f.select :user_id, options_from_collection_for_select(User.all, "id", "email") %>
+		</div>
+<% end %>

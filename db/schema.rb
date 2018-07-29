@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 2018_07_20_194116) do
     t.index ["user_id"], name: "index_charges_on_user_id"
   end
 
+  create_table "collaborators", force: :cascade do |t|
+    t.integer "wiki_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"

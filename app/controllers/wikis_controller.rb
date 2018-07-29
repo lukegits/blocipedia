@@ -6,27 +6,25 @@ class WikisController < ApplicationController
   after_action :verify_authorized, :except => :index
 
   def index
-    @wikis = Wiki.all
-    @wikis = Wiki.visible_to(current_user)
-
-    if current_user.premium? || current_user.admin?
-    @wikis = Wiki.all
-    end
+    @wikis = policy_scope(Wiki)
 
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    @collaboration = @wiki.collaborators.new
     authorize @wiki
   end
 
   def new
+    @user = current_user
     @wiki = Wiki.new
     authorize @wiki
   end
 
   def create
-    @wiki = Wiki.create(wiki_params)
+    @user = current_user
+    @wiki = current_user.wiki.build(wiki_params)
     @wiki.user = current_user
     authorize @wiki
 
@@ -34,11 +32,13 @@ class WikisController < ApplicationController
       redirect_to @wiki, notice: "Wiki was saved successfully."
     else
       flash[:error] = "Error creating wiki. Please try again."
+      render :new
     end
   end
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @collaborator = Collaborator.new
     authorize @wiki
   end
 
@@ -73,7 +73,7 @@ class WikisController < ApplicationController
  private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private )
+     params.require(:wiki).permit(:title, :body, :private, :user)
   end
 
 end
