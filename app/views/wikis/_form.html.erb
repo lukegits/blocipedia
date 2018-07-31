@@ -12,6 +12,9 @@
 
   <%= render partial: 'wikis/form', locals: { f: f } %>
 
+</div>
+</div>
+
   <% if current_user.admin? || current_user.premium? %>
     <div class="form-group">
         <%= f.label :private, class: 'checkbox' do %>
