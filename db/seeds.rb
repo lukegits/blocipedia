@@ -14,8 +14,9 @@ include Faker
   15.times do
     Wiki.create!(
       title: Faker::Lorem.sentence,
-      body: Faker::Lorem.paragraph
-      user: users.sample
+      body: Faker::Lorem.paragraph,
+      user: users.sample,
+      private: false
     )
   end
   wikis = Wiki.all
