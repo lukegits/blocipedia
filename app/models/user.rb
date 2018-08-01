@@ -5,8 +5,8 @@ class User < ApplicationRecord
   after_update :publish_all
    private
     def publish_all
-     if @user.role == 'standard'
-       @user.wikis.where(private: true) do |makepub|
+     if user.role == 'standard'
+       user.wikis.where(private: true) do |makepub|
          makepub.update_attributes(private: false)
   end
 
