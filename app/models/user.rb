@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  validate private: false
+  # validates private: false
   after_validation :wikis
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-  
+
   has_many :collaborators
   has_many :wikis, through: :collaborators
 
